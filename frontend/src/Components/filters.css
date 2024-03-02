@@ -1,0 +1,84 @@
+/* filters.css */
+.container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  h2 {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  img {
+    margin-left: 10px;
+    width: 20px;
+  }
+  
+  .label {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .select {
+    margin-bottom: 20px; /* Increased spacing between filter elements */
+  }
+  
+  .select-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none; /* Remove input focus outline */
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjust spacing between checkboxes */
+  }
+  
+  .checkbox label {
+    
+    margin-right: 10px;
+  }
+  
+  .button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer; /* Add pointer cursor on hover */
+    display: block; /* Make the button a block element */
+    width: 100%; /* Fill the container width */
+  }
+  
+  /* Apply styles for multiple select */
+  .select-box[multiple] {
+    height: auto; /* Allow the select to expand to show multiple options */
+    min-height: 120px; /* Set a minimum height for better visibility */
+    overflow-y: scroll; /* Add a scrollbar if needed */
+  }
+  
+
+  /* filters.css */
+/* ... (other CSS rules) ... */
+
+/* .header {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .header img {
+    margin-left: 10px;
+    width: 20px;
+  } */
+  

@@ -1,0 +1,126 @@
+/* products.css */
+
+/* Header */
+h2 {
+  font-size: 24px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-bottom: 30px;
+}
+
+/* Table Styles */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: rgba(185, 188, 191, 0.2) 0px 0px 24px 5px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+/* Table Header */
+.table thead th {
+  padding: 10px 16px;
+  text-align: left;
+  background-color: #f3f3f5;
+}
+
+/* Table Rows */
+.table tbody tr td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Action Buttons */
+.table tbody tr td.action {
+  display: flex;
+}
+
+.table tbody tr td.action button {
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #f3f3f5;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+/* Responsive Styles (For Mobile) */
+@media screen and (max-width: 767px) {
+  .table {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  /* Hide Table Header on Mobile */
+  .table thead {
+    display: none;
+  }
+
+  /* Responsive Table Rows */
+  .table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 50px 10px 10px 10px;
+    position: relative;
+    box-shadow: rgba(185, 188, 191, 0.2) 0px 0px 24px 5px;
+  }
+
+  /* Responsive Table Cells */
+  .table tbody tr td {
+    display: flex;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 5px;
+    margin-right: 16px;
+    border: none;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive Table Headings */
+  .table tbody tr td .res-head {
+    display: block;
+    font-weight: 700;
+    margin-right: 5px;
+  }
+
+  /* First Cell (Positioned) */
+  .table tbody tr td:first-child {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  /* Action Buttons (Positioned) */
+  .table tbody tr td.action {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+
+.paginationBox {
+  /* width: 200vmax; */
+  display: flex;
+  justify-content: center;
+  margin: 6vmax;
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+ padding: 0;
+
+}
+
+.page-item{
+  background-color: rgb(255,255,255);
+  list-style: none;
+  border:1px solid rgba(0, 0, 0, 0.178);
+  padding:1vmax 1.5vmax;
+  transition: all 0.3s;
+  cursor: pointer;
+}
