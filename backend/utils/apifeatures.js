@@ -8,110 +8,87 @@ class ApiFeatures {
     const keyword = this.queryStr.keyword
       ? {
           $or: [
+            
             {
-              Description: {
-                $regex: this.queryStr.keyword,
-                $options: "i",
-              },
-            },
-           
-            {
-              SpecifiedStandard: {
+              screwType: {
                 $regex: this.queryStr.keyword,
                 $options: "i",
               },
             },
             {
-              CertificationStatus: {
+              certification: {
                 $regex: this.queryStr.keyword,
                 $options: "i",
               },
             },
             {
-              SurfaceFinish: {
+              brand: {
                 $regex: this.queryStr.keyword,
                 $options: "i",
               },
             },
             {
-              HotForge: {
+              material: {
                 $regex: this.queryStr.keyword,
                 $options: "i",
               },
             },
             {
-              ColdForge: {
+              threadSize: {
                 $regex: this.queryStr.keyword,
                 $options: "i",
               },
             },
             {
-              Shade: {
+              rating: {
                 $regex: this.queryStr.keyword,
                 $options: "i",
               },
             },
             {
-              CoatedMaterial: {
+              description: {
                 $regex: this.queryStr.keyword,
                 $options: "i",
               },
             },
-            // {
-            //   MildSteelGrade: {
-            //     $regex: this.queryStr.keyword,
-            //     $options: "i",
-            //   },
-            // },
-            // {
-            //   AlloySteelGrade: {
-            //     $regex: this.queryStr.keyword,
-            //     $options: "i",
-            //   },
-            // },
-            {
-              Brand: {
-                $regex: this.queryStr.keyword,
-                $options: "i",
-              },
-            },
-           
-            // Add more fields as needed
+          
           ],
         }
       : {};
   
-      console.log(keyword);
-    this.query = this.query.find({ ...keyword });
+    console.log(keyword);
+    // this.query = this.query.find({ $or: [ ...keyword.$or ] });
   
     return this;
   }
-  
 
   filter() {
-    const querycopy = { ...this.queryStr };
+    // Create an object to hold the filter criteria
+    const filterCriteria = {};
 
+    // Copy the query string object
+    const queryCopy = { ...this.queryStr };
+
+    // Remove unnecessary fields from the query string object
     const removeFields = ["keyword", "page", "limit"];
+    removeFields.forEach((key) => delete queryCopy[key]);
 
-    removeFields.forEach((key) => delete querycopy[key]);
+    // Add each remaining field to the filter criteria
+    Object.keys(queryCopy).forEach((key) => {
+        filterCriteria[key] = queryCopy[key];
+    });
 
-    let queryStr = JSON.stringify(querycopy);
-    queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
-
-    if (this.queryStr.CoatedMaterial) {
-        const coatedMaterials = this.queryStr.CoatedMaterial.split(",");
-        queryStr = JSON.stringify({
-            ...JSON.parse(queryStr),
-            CoatedMaterial: { $in: coatedMaterials }
-        });
+    // If there are no filter criteria, return immediately
+    if (Object.keys(filterCriteria).length === 0) {
+        return this;
     }
 
-    // Update the query string based on other filters (e.g., CertificationStatus, SurfaceFinish) selected by the user in the frontend.
-
-    this.query = this.query.find(JSON.parse(queryStr));
+    // Apply the filter criteria to the query
+    this.query = this.query.find(filterCriteria);
 
     return this;
 }
+
 
 
 

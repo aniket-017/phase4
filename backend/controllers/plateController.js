@@ -18,16 +18,18 @@ exports.createPlate = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.getAllPlates = catchAsyncErrors(async (req, res, next) => {
-  try {
-    const plates = await Plate.find();
+  const platesCount = await Plate.countDocuments();
+  const resultPerPage = 50;
 
-    res.status(200).json({
-      success: true,
-      plates,
-    });
-  } catch (error) {
-    next(error);
-  }
+  const apiFeatures = new ApiFeatures(Plate.find(), req.query).search().pagination(resultPerPage).filter();
+  const plates = await apiFeatures.query;
+
+  res.status(200).json({
+    success: true,
+    plates,
+    platesCount,
+    resultPerPage,
+  });
 });
 
 exports.getPlateDetails = catchAsyncErrors(async (req, res, next) => {

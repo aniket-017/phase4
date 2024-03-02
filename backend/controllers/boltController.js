@@ -18,16 +18,18 @@ exports.createBolt = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.getAllBolts = catchAsyncErrors(async (req, res, next) => {
-  try {
-    const bolts = await Bolt.find();
+  const boltsCount = await Bolt.countDocuments();
+  const resultPerPage = 50;
 
-    res.status(200).json({
-      success: true,
-      bolts,
-    });
-  } catch (error) {
-    next(error);
-  }
+  const apiFeatures = new ApiFeatures(Bolt.find(), req.query).search().pagination(resultPerPage).filter();
+  const bolts = await apiFeatures.query;
+
+  res.status(200).json({
+    success: true,
+    bolts,
+    boltsCount,
+    resultPerPage,
+  });
 });
 
 exports.getBoltDetails = catchAsyncErrors(async (req, res, next) => {

@@ -18,17 +18,20 @@ exports.createScrew = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.getAllScrews = catchAsyncErrors(async (req, res, next) => {
-  try {
-    const screws = await Screw.find();
+  const screwsCount = await Screw.countDocuments();
+  const resultPerPage = 50;
 
-    res.status(200).json({
-      success: true,
-      screws,
-    });
-  } catch (error) {
-    next(error);
-  }
+  const apiFeatures = new ApiFeatures(Screw.find(), req.query).search().pagination(resultPerPage).filter();
+  const screws = await apiFeatures.query;
+
+  res.status(200).json({
+    success: true,
+    screws,
+    screwsCount,
+    resultPerPage,
+  });
 });
+
 
 exports.getScrewDetails = catchAsyncErrors(async (req, res, next) => {
   try {
