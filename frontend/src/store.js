@@ -6,9 +6,10 @@ import { productDetailsReducer, productsReducer } from "./Services/Reducers/prod
 import filterReducer, { filterreducers } from './Services/Reducers/filterReducer';
 import { forgotPasswordReducer, profileReducer, userReducer } from './Services/Reducers/userReducer';
 import cartReducer from './Services/Reducers/cartReducer';
-import { screwsReducer } from './Services/Reducers/screwsReducer';
-import { boltsReducer } from './Services/Reducers/boltReducer';
-import { platesReducer } from './Services/Reducers/plateReducer';
+import { screwDetailsReducer, screwsReducer } from './Services/Reducers/screwsReducer';
+import { boltDetailsReducer, boltsReducer } from './Services/Reducers/boltReducer';
+import { plateDetailsReducer, platesReducer } from './Services/Reducers/plateReducer';
+
 
 // import { filterreducers } from './Services/Reducers/userReducer';
 
@@ -30,6 +31,9 @@ const store = configureStore({
     bolts: boltsReducer,
     plates: platesReducer,
     filter: filterReducer,
+    screwdetails : screwDetailsReducer,
+    boltdetails: boltDetailsReducer,
+    platedetails: plateDetailsReducer,
     user: userReducer,
     profile: profileReducer,
     forgotPassword: forgotPasswordReducer,

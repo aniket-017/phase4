@@ -24,7 +24,7 @@ const {product, loading, error} = useSelector((state)=> state.productdetails)
     }
   };
 
- console.log(product._);
+//  console.log(product._);
 
   const handleAddToCart = () => {
     const cartItem = {
@@ -86,3 +86,6 @@ const {product, loading, error} = useSelector((state)=> state.productdetails)
 }
 
 export default ProductDetails
+
+
+

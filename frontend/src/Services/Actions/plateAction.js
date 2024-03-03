@@ -43,7 +43,7 @@ export const getPlateDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PLATE_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/aak/l1/plates/${id}`);
+    const { data } = await axios.get(`/aak/l1/plate/${id}`);
 
     dispatch({
       type: PLATE_DETAILS_SUCCESS,

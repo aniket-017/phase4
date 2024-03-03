@@ -43,7 +43,7 @@ export const getBoltDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: BOLT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/aak/l1/bolts/${id}`);
+    const { data } = await axios.get(`/aak/l1/bolt/${id}`);
 
     dispatch({
       type: BOLT_DETAILS_SUCCESS,

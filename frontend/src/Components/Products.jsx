@@ -6,6 +6,7 @@ import { getBolts } from "../Services/Actions/boltAction.js";
 import { useParams } from "react-router-dom";
 import "./Products.css";
 import { addToCart } from "../Services/Actions/cartAction";
+import { Link } from "react-router-dom"; 
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const Products = () => {
           <tr>
             <th>Part Number</th>
             <th>Description</th>
-            <th>Brand</th>
+            {/* <th>Brand</th> */}
             <th>Quantity</th>
             <th>Action</th>
           </tr>
@@ -78,15 +79,17 @@ const Products = () => {
             a.map((product, index) => (
               <tr key={index}>
                 <td>
-                  <a href={`#${product.productNo}`}>{product.partNo}</a>
+                  {/* <a href={`#${product.productNo}`}>{product.partNo}</a> */}
+                  <Link to={`/products/${filterTypeRedux}/${product._id}`}>{product.partNo}</Link>
+
                 </td>
                 <td>{product.description}</td>
-                <td>{product.brand}</td>
+                {/* <td>{product.brand}</td> */}
                 <td>
                   <input type="number" min="1" id="quantity" name="quantity" value={quantity} />
                 </td>
                 <td>
-                  <button onClick={handleAddToCart}>Add to Cart</button>
+                  <button onClick={handleAddToCart}>R.F.Q</button>
                 </td>
               </tr>
             ))}

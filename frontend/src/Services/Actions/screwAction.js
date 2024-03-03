@@ -50,7 +50,7 @@ export const getScrewDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: SCREW_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/aak/l1/screws/${id}`);
+    const { data } = await axios.get(`/aak/l1/screw/${id}`);
 
     dispatch({
       type: SCREW_DETAILS_SUCCESS,
