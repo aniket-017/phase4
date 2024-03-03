@@ -23,13 +23,20 @@ const Filters = () => {
     console.log(`[${selectedFilters}]`);
     let keyword= "";
     let currentPage = 1;
+   
     dispatch(getScrews(keyword, currentPage, updatedOptions));
+    dispatch(getBolts(keyword, currentPage, updatedOptions));
+    dispatch(getPlates(keyword, currentPage, updatedOptions));
    
   };
   
   const setLocalFilterType = (type) => { // Rename the function
     setLocalFilterTypeState(type); // Update local state
+    setSelectedOptions({});
     dispatch(setReduxFilterType(type)); // Dispatch action to update Redux state
+    dispatch(getScrews());
+    dispatch(getBolts());
+    dispatch(getPlates());
   };
 
   let filterOptions = [];
