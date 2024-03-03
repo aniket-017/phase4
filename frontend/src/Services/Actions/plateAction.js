@@ -9,11 +9,22 @@ import {
   CLEAR_ERRORS,
 } from "../Constants/plateConstants";
 
-export const getPlates = () => async (dispatch) => {
+export const getPlates = (keyword = "", currentPage = 1, selectedFilters = {}) => async (dispatch) => {
   try {
     dispatch({ type: ALL_PLATES_REQUEST });
 
-    const { data } = await axios.get("/aak/l1/plates");
+    // Convert selected filters object into query parameters
+    const filtersQuery = Object.entries(selectedFilters)
+      .map(([filter, selectedOption]) => `${filter}=${encodeURIComponent(selectedOption)}`)
+      .join('&');
+
+    // Append selected filters query parameters to the request URL
+    let link = `/aak/l1/plates?keyword=${keyword}&page=${currentPage}`;
+    if (filtersQuery) {
+      link += `&${filtersQuery}`;
+    }
+
+    const { data } = await axios.get(link);
 
     dispatch({
       type: ALL_PLATES_SUCCESS,
@@ -26,6 +37,7 @@ export const getPlates = () => async (dispatch) => {
     });
   }
 };
+
 
 export const getPlateDetails = (id) => async (dispatch) => {
   try {

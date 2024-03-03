@@ -68,10 +68,13 @@ class ApiFeatures {
 
     // Copy the query string object
     const queryCopy = { ...this.queryStr };
+    console.log("Query Copy Before:", queryCopy);
 
     // Remove unnecessary fields from the query string object
     const removeFields = ["keyword", "page", "limit"];
     removeFields.forEach((key) => delete queryCopy[key]);
+
+    console.log("Query Copy After:", queryCopy);
 
     // Add each remaining field to the filter criteria
     Object.keys(queryCopy).forEach((key) => {
@@ -82,6 +85,8 @@ class ApiFeatures {
     if (Object.keys(filterCriteria).length === 0) {
         return this;
     }
+
+    console.log("Filter Criteria:", filterCriteria);
 
     // Apply the filter criteria to the query
     this.query = this.query.find(filterCriteria);

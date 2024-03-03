@@ -18,8 +18,9 @@ exports.createScrew = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.getAllScrews = catchAsyncErrors(async (req, res, next) => {
+  console.log(req.body)
   const screwsCount = await Screw.countDocuments();
-  const resultPerPage = 50;
+  const resultPerPage = 500;
 
   const apiFeatures = new ApiFeatures(Screw.find(), req.query).search().pagination(resultPerPage).filter();
   const screws = await apiFeatures.query;

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterType as setReduxFilterType } from "../Services/Actions/filterAction.js";
 import { getScrews } from "../Services/Actions/screwAction.js";
+import { getBolts } from "../Services/Actions/boltAction.js";
+import { getPlates } from "../Services/Actions/plateAction.js";
 import "./filters.css";
 
 const Filters = () => {
@@ -14,7 +16,7 @@ const Filters = () => {
     const updatedOptions = { ...selectedOptions, [filterName]: option };
     setSelectedOptions(updatedOptions);
   
-    const selectedFilters = Object.entries(updatedOptions)
+  const selectedFilters = Object.entries(updatedOptions)
       .map(([filter, selectedOption]) => `${filter}: ${selectedOption}`)
       .join(', ');
   
@@ -22,6 +24,7 @@ const Filters = () => {
     let keyword= "";
     let currentPage = 1;
     dispatch(getScrews(keyword, currentPage, updatedOptions));
+   
   };
   
   const setLocalFilterType = (type) => { // Rename the function
