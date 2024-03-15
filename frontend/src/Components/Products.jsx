@@ -13,7 +13,7 @@ const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
   let { keyword } = useParams();
   const [quantity, setQuantity] = useState(0);
-
+  const [quantities, setQuantities] = useState({});
 
   
 
@@ -24,13 +24,12 @@ const Products = () => {
     dispatch(getBolts());
   }, [dispatch, keyword, currentPage]);
 
-  const handleQuantityChange = (event) => {
+  const handleQuantityChange = (event, productId) => {
     const newQuantity = parseInt(event.target.value, 10);
-    if (!isNaN(newQuantity)) {
-      setQuantity(newQuantity);
-    }
+    setQuantities({ ...quantities, [productId]: newQuantity });
   };
 
+  
   const { screws } = useSelector((state) => state.screws);
   const { bolts } = useSelector((state) => state.bolts);
   const { plates } = useSelector((state) => state.plates);
@@ -46,18 +45,18 @@ const Products = () => {
     a = screws ? screws.screws : [];
   }
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (product) => {
     const cartItem = {
-      id: a._id,
-      Description: a.Description,
-      Standard: a.SpecifiedStandard,
-      Certification: a.CertificationStatus,
-      Brand: a.brand,
-      Price: 10,
-      Quantity: quantity,
+      id: product.partNo,
+      Description: product.description,
+      Standard: product.industryStandard,
+      Certification: product.certification,
+      Brand: product.brand,
+      Price: 10, // You may need to adjust this based on the actual price of the product
+      Quantity: quantities[product._id] || 0,
     };
     dispatch(addToCart(cartItem));
-    alert(`You added ${quantity} ${a.name} to the cart`);
+    alert(`You added ${quantities[product._id]} ${product.name} to the cart`);
   };
   
 
@@ -86,10 +85,16 @@ const Products = () => {
                 <td>{product.description}</td>
                 {/* <td>{product.brand}</td> */}
                 <td>
-                  <input type="number" min="1" id="quantity" name="quantity" value={quantity} />
+                <input
+                  type="number"
+                  id={`quantity_${product._id}`}
+                  name={`quantity_${product._id}`}
+                  value={quantities[product._id] || 0}
+                  onChange={(event) => handleQuantityChange(event, product._id)}
+                />
                 </td>
                 <td>
-                  <button onClick={handleAddToCart}>R.F.Q</button>
+                <button onClick={() => handleAddToCart(product)}>RFQ</button>
                 </td>
               </tr>
             ))}

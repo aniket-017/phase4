@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import {useParams} from 'react-router-dom';
 import {getScrewDetails} from '../Services/Actions/screwAction'
-
+import { addToCart } from '../Services/Actions/cartAction';
 
 const ScrewDetails = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,32 @@ const ScrewDetails = () => {
   const {screw, loading, error} = useSelector((state)=> state.screwdetails)
 
 
+  const [quantity, setQuantity] = useState(1);
+  const pricePerItem = 10; 
+
+
+  const handleQuantityChange = (event) => {
+    const newQuantity = parseInt(event.target.value, 10);
+    if (!isNaN(newQuantity)) {
+      setQuantity(newQuantity);
+    }
+  };
+
+//  console.log(product._);
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: product._id,
+      Description: product.description,
+      Standard:product.Standard,
+      Certification:product.certification,
+      Brand:product.brand,
+      Price: 10,
+      Quantity: quantity,
+    };
+    dispatch(addToCart(cartItem));
+    alert(`You added ${quantity} ${product.name} to the cart`);
+  };
   console.log(screw.screw);
   let product = screw.screw;
   return (
@@ -28,16 +54,16 @@ const ScrewDetails = () => {
         <div>
           <label htmlFor="quantity">Quantity: </label>
           
-          {/* <input
+          <input
             type="number"
             id="quantity"
             name="quantity"
             value={quantity}
             onChange={handleQuantityChange}
           />
-          <button onClick={handleAddToCart}>Add to Cart</button> */}
+          <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
-        {/* <p>Price for {quantity} quantity: ${quantity * pricePerItem}</p> */}
+        <p>Price for {quantity} quantity: ${quantity * pricePerItem}</p>
         
       </div>
     </div>

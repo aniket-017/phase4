@@ -103,7 +103,7 @@ const Filters = () => {
       </div>
       {filterOptions.map((filter, index) => (
         <div key={index}>
-          <h3>{filter.name}</h3>
+          <h3 className="filterNameh3">{filter.name}</h3>
           <ul>
             {filter.options.map((option, idx) => (
               <li

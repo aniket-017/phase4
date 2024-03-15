@@ -1,126 +1,59 @@
-/* products.css */
+/* Products.css */
 
-/* Header */
-h2 {
-  font-size: 24px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  margin-bottom: 30px;
+/* Products container */
+.products-container {
+  margin: 20px;
 }
 
-/* Table Styles */
-.table {
+/* Table styles */
+table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
-  box-shadow: rgba(185, 188, 191, 0.2) 0px 0px 24px 5px;
-  border-radius: 5px;
-  font-family: Arial, sans-serif;
 }
 
-/* Table Header */
-.table thead th {
-  padding: 10px 16px;
+/* Table headings */
+th {
+  background-color: #f2f2f2;
+  border: 1px solid #dddddd;
+  padding: 8px;
   text-align: left;
-  background-color: #f3f3f5;
 }
 
-/* Table Rows */
-.table tbody tr td {
-  padding: 10px 16px;
-  border-bottom: 1px solid #eee;
+/* Table cells */
+td {
+  border: 1px solid #dddddd;
+  padding: 8px;
 }
 
-/* Action Buttons */
-.table tbody tr td.action {
-  display: flex;
+/* Links */
+a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none; /* Remove underline */
 }
 
-.table tbody tr td.action button {
-  margin-right: 10px;
-  cursor: pointer;
-  background-color: #f3f3f5;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 2px;
+a:hover {
+  text-decoration: underline; /* Add underline on hover */
 }
 
-/* Responsive Styles (For Mobile) */
-@media screen and (max-width: 767px) {
-  .table {
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-  /* Hide Table Header on Mobile */
-  .table thead {
-    display: none;
-  }
-
-  /* Responsive Table Rows */
-  .table tbody tr {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-    background-color: #fff;
-    padding: 50px 10px 10px 10px;
-    position: relative;
-    box-shadow: rgba(185, 188, 191, 0.2) 0px 0px 24px 5px;
-  }
-
-  /* Responsive Table Cells */
-  .table tbody tr td {
-    display: flex;
-    background-color: transparent;
-    padding: 0;
-    margin-bottom: 5px;
-    margin-right: 16px;
-    border: none;
-    flex-wrap: wrap;
-  }
-
-  /* Responsive Table Headings */
-  .table tbody tr td .res-head {
-    display: block;
-    font-weight: 700;
-    margin-right: 5px;
-  }
-
-  /* First Cell (Positioned) */
-  .table tbody tr td:first-child {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-  }
-
-  /* Action Buttons (Positioned) */
-  .table tbody tr td.action {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
+/* Input field for quantity */
+input[type="number"] {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  text-align: center;
 }
 
-
-.paginationBox {
-  /* width: 200vmax; */
-  display: flex;
-  justify-content: center;
-  margin: 6vmax;
+/* Button for adding to cart */
+.add-to-cart-button {
+  background-color: #007bff; /* Blue background color */
+  color: #ffffff; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  padding: 8px 16px; /* Padding */
+  cursor: pointer; /* Add cursor pointer */
 }
 
-.pagination{
-  display: flex;
-  justify-content: center;
- padding: 0;
-
-}
-
-.page-item{
-  background-color: rgb(255,255,255);
-  list-style: none;
-  border:1px solid rgba(0, 0, 0, 0.178);
-  padding:1vmax 1.5vmax;
-  transition: all 0.3s;
-  cursor: pointer;
+.add-to-cart-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
