@@ -19,9 +19,9 @@ const Products = () => {
 
   
   useEffect(() => {
-    dispatch(getPlates());
+    dispatch(getPlates(keyword, currentPage));
     dispatch(getScrews(keyword, currentPage));
-    dispatch(getBolts());
+    dispatch(getBolts(keyword, currentPage));
   }, [dispatch, keyword, currentPage]);
 
   const handleQuantityChange = (event, productId) => {

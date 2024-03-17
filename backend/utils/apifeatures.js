@@ -4,7 +4,8 @@ class ApiFeatures {
     this.queryStr = queryStr;
   }
  
-  search() {
+search() {
+
     const keyword = this.queryStr.keyword
       ? {
           $or: [
@@ -56,8 +57,7 @@ class ApiFeatures {
         }
       : {};
   
-    console.log(keyword);
-    // this.query = this.query.find({ $or: [ ...keyword.$or ] });
+      this.query = this.query.find({ ...keyword });
   
     return this;
   }

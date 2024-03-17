@@ -14,6 +14,7 @@ import {
 
 export const getScrews = (keyword = "", currentPage = 1, selectedFilters = {}) => async (dispatch) => {
   try {
+    
     dispatch({ type: ALL_SCREWS_REQUEST });
 
     // Convert selected filters object into query parameters

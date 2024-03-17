@@ -27,7 +27,7 @@ function App() {
         {/* <Route path="/login" element={<LoginSignUp />} /> */}
         <Route path="/Profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
-        {/* <Route path="/products/:keyword" element={<Page1 />} /> */}
+        <Route path="/products/:keyword" element={<Page1 />} />
         {/* <Route path="/login" element={<Page1 />} /> */}
     
         {/* <Route path="/:id" element={<ProductDetails />} /> */}

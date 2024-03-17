@@ -34,6 +34,12 @@ exports.getAllScrews = catchAsyncErrors(async (req, res, next) => {
 });
 
 
+
+
+
+
+
+
 exports.getScrewDetails = catchAsyncErrors(async (req, res, next) => {
   try {
     const screw = await Screw.findById(req.params.id);

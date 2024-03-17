@@ -24,9 +24,17 @@
     margin-bottom: 20px;
     border: 1px solid #ddd;
     padding: 15px;
+    padding-left: 5px;
+    padding-right: 25px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
+
+  .cart-item:hover{
+    background-color: rgb(84, 84, 84);
+  }
+  
   
   .item-info {
     display: flex;
@@ -36,7 +44,13 @@
   
   .item-details {
     flex-grow: 1;
+    color: white;
   }
+
+  .item-details> span{
+    color: whitesmoke;
+  }
+
   
   .item-name {
     font-size: 18px;
